@@ -1,6 +1,6 @@
 <?php
 
-namespace p3\Console\Commands;
+namespace P3\Console\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Foundation\Inspiring;

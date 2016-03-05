@@ -1,0 +1,69 @@
+
+/*
+    p3.css
+    Stylesheet for the p3 web site.
+    */
+
+  .row {
+            padding-top: 30px;
+        }
+
+.checkbox,.radio {
+    padding-left: 25px;
+}
+
+
+  .row{
+    margin-top:40px;
+    padding: 0 10px;
+}
+
+
+.form-error {
+    visibility:visible;
+}
+
+
+.form-noerror {
+    display:none;
+}
+
+
+.label-author {
+    background-color: #3f454b;
+}
+
+ul.user-list 
+{
+    list-style-type: none;
+    padding: 2px;
+    border-style: dashed;
+    border-width: 1px;
+    border-color: lightgray;
+    margin-bottom:5px;
+}
+
+ul li span.field-name { 
+    float: left;
+    width: 80px;
+    color:white;
+    background-color:gray;
+    font-weight:100;
+    padding-left:3px;
+    /*display: block;*/
+}
+
+ul li span.field-value { 
+    /*float: left;*/
+    padding-left:5px;
+    padding-right:5px;
+    background-color:whitesmoke;
+    border-radius : 5px;
+    /*display:block;*/
+}
+
+#lorem-error, #user-gen-error {
+    margin-bottom:4px;
+    margin-top:5px;
+    display:block;
+}

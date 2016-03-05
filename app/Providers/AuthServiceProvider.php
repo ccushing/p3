@@ -1,6 +1,6 @@
 <?php
 
-namespace p3\Providers;
+namespace P3\Providers;
 
 use Illuminate\Contracts\Auth\Access\Gate as GateContract;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
@@ -13,7 +13,7 @@ class AuthServiceProvider extends ServiceProvider
      * @var array
      */
     protected $policies = [
-        'p3\Model' => 'p3\Policies\ModelPolicy',
+        'P3\Model' => 'P3\Policies\ModelPolicy',
     ];
 
     /**

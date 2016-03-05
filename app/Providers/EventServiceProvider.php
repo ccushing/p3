@@ -1,6 +1,6 @@
 <?php
 
-namespace p3\Providers;
+namespace P3\Providers;
 
 use Illuminate\Contracts\Events\Dispatcher as DispatcherContract;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
@@ -13,8 +13,8 @@ class EventServiceProvider extends ServiceProvider
      * @var array
      */
     protected $listen = [
-        'p3\Events\SomeEvent' => [
-            'p3\Listeners\EventListener',
+        'P3\Events\SomeEvent' => [
+            'P3\Listeners\EventListener',
         ],
     ];
 

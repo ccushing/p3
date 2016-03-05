@@ -11,9 +11,47 @@
 |
 */
 
+
+/*--------------------------------------------------------------
+Default Route - Displays the main developer's friend page
+--------------------------------------------------------------*/
 Route::get('/', function () {
-    return view('welcome');
+    return view('main');
 });
+
+
+
+
+/*--------------------------------------------------------------
+Default Result routes for each conponent
+--------------------------------------------------------------*/
+Route::post('/LoremIpsum', 'LoremController@postLoremTextResults');
+Route::post('/RandomUsers', 'RandomUserController@postRandomUserResults');
+Route::post('/RandomLocation', 'RandomLocationController@postRandomLocationResults');
+
+/*--------------------------------------------------------------
+.csv route for each component (not Lorem Ipsum)
+--------------------------------------------------------------*/
+Route::post('/RandomUsers/csv', 'RandomUserController@postRandomUserResultsCSV');
+Route::post('/RandomLocation/csv', 'RandomLocationController@postRandomLocationResultsCSV');
+
+
+/*--------------------------------------------------------------
+Excel route for each component (not Lorem Ipsum)
+--------------------------------------------------------------*/
+Route::post('/RandomUsers/excel', 'RandomUserController@postRandomUserResultsExcel');
+Route::post('/RandomLocation/excel', 'RandomLocationController@postRandomLocationResultsExcel');
+
+
+
+/*
+Practice Route - TODO - Remove this on final deployment
+*/
+Route::get('/practice', function () {
+    echo 'practice route';
+});
+
+
 
 /*
 |--------------------------------------------------------------------------
