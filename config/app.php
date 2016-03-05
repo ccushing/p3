@@ -156,6 +156,12 @@ return [
         p3\Providers\EventServiceProvider::class,
         p3\Providers\RouteServiceProvider::class,
 
+
+        /*
+         * Custom Packages included for P3...
+         */
+        'Maatwebsite\Excel\ExcelServiceProvider',
+
     ],
 
     /*
@@ -201,6 +207,7 @@ return [
         'URL'       => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View'      => Illuminate\Support\Facades\View::class,
+        'Excel'     => 'Maatwebsite\Excel\Facades\Excel',
 
     ],
 
