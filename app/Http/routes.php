@@ -16,7 +16,8 @@
 Default Route - Displays the main developer's friend page
 --------------------------------------------------------------*/
 Route::get('/', function () {
-    return view('main');
+    #return view('main');
+    return view('main')->with('loremResults', '');
 });
 
 

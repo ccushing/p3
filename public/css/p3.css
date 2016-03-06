@@ -67,3 +67,18 @@ ul li span.field-value {
     margin-top:5px;
     display:block;
 }
+
+#LoremOptionsPanel
+{
+    padding-left: 25px;
+}
+
+div.form-group label
+{
+    display:block;
+}
+
+div.panel h4
+{
+    margin-left: 25px;
+}

@@ -16,6 +16,15 @@ define('LARAVEL_START', microtime(true));
 
 require __DIR__.'/../vendor/autoload.php';
 
+
+#Require the Faker Factory
+require_once '/../vendor/fzaninotto/faker/src/autoload.php';
+
+// alternatively, use another PSR-0 compliant autoloader (like the Symfony2 ClassLoader for instance)
+
+
+
+
 /*
 |--------------------------------------------------------------------------
 | Include The Compiled Class File
