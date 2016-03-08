@@ -76,9 +76,24 @@ ul li span.field-value {
 div.form-group label
 {
     display:block;
+    margin-top:5px;
 }
 
 div.panel h4
 {
     margin-left: 25px;
+}
+
+div.results
+{
+    height: 350px;
+    overflow: scroll;
+ }
+
+.user-image
+{
+    width: 120px;
+    border-radius: 50%;
+    float: left;
+    margin: 5px;
 }

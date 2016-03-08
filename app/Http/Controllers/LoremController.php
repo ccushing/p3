@@ -42,9 +42,6 @@ class LoremController extends Controller {
 		$includeHeader = $_POST["IncludeHeaders"]; 
 		$includeLists = $_POST["IncludeLists"];
 
-		$includeHeader = ($includeHeader - 1)*25;
-		$includeLists = ($includeLists - 1)*25;
-
 		#echo 'includelists='.$includeLists.'<br>';
 		#echo 'listitemsmin='.$maxListItemsArray[0].'<br>';
 		#echo 'listitemsmax='.$maxListItemsArray[1].'<br>';

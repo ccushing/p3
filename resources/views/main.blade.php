@@ -56,30 +56,13 @@
                                         </div>
 
                                         <div class="form-group">
-                                        <label for="IncludeHeaders">Include Headers before a paragraph.</label>
-                                                <input id="IncludeHeaders" name="IncludeHeaders" type="text"
-                                                      data-provide="slider"
-                                                      data-slider-ticks="[1, 2, 3,4,5]"
-                                                      data-slider-ticks-labels='["Never", "Rarely", "Some","Often","Always"]'
-                                                      data-slider-min="1"
-                                                      data-slider-max="5"
-                                                      data-slider-step="1"
-                                                      data-slider-value="3"
-                                                      data-slider-tooltip="hide" />
+                                            <label for="IncludeHeaders">Frequency % of Headers to Include Before a Paragraph.</label>
+                                            <input id="IncludeHeaders" name="IncludeHeaders" type="text" data-slider-min="0" data-slider-max="100" data-slider-step="1" data-slider-value="20"/>
                                         </div>
 
-
                                         <div class="form-group">
-                                        <label for="IncludeLists">Include Lists inside of a paragraph.</label>
-                                                <input id="IncludeLists" name="IncludeLists" type="text"
-                                                      data-provide="slider"
-                                                      data-slider-ticks="[1, 2, 3, 4, 5]"
-                                                      data-slider-ticks-labels='["Never", "Rarely", "Some","Often","Always"]'
-                                                      data-slider-min="1"
-                                                      data-slider-max="5"
-                                                      data-slider-step="1"
-                                                      data-slider-value="3"
-                                                      data-slider-tooltip="hide" />
+                                            <label for="IncludeLists">Frequency % of Lists to Include.</label>
+                                            <input id="IncludeLists" name="IncludeLists" type="text" data-slider-min="0" data-slider-max="100" data-slider-step="1" data-slider-value="15"/>
                                         </div>
 
                                         <div class="form-group">
@@ -94,7 +77,7 @@
                                         <div class="label label-danger" id="lorem-error">{{ $errorMessage }}</div>
                                          @endif
                                         
-                                        <div class="panel panel-default"><h4>Generated Text</h4>
+                                        <div class="panel panel-default results"><h4>Generated Text</h4>
                                           <div class="panel-body" id="LoremResults">
                                           <p>
                                           {!! $loremResults !!}
@@ -113,11 +96,17 @@
                                         <h3 class="panel-title" id="RandomUserHeader">Random User Generator
                             <a data-toggle="collapse" data-target="#UserBody" href="#RandomUserHeader"><span class="pull-right clickable"><i class="glyphicon glyphicon-chevron-down"></i></span></a></h3>
                                     </div>
+                                    <form method="post" action="/RandomUsers" id="RandomUserGeneratorForm">
                                     <div class="panel-body" id="UserBody">
                                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam in nunc finibus, mattis risus at, porttitor neque. Suspendisse odio elit, congue id fermentum at, tristique et urna.</p>
                                         <div class="form-group">
                                             <label for="MaxUsers">Number of Users (Maximum of 100)</label>
-                                            <input name="MaxUsers" class="form-control" id="MaxUsers" type="number" value="5">
+                                            
+                                            <input id="MaxUsers" name="MaxUsers" type="text" data-slider-min="1" data-slider-max="100" data-slider-step="1" data-slider-value="20"/><br>
+
+                                            <label for="PercentFemale">Gender Percentage</label>
+                                            Male&nbsp;<input id="PercentFemale" name="PercentFemale" type="text" data-slider-min="1" data-slider-max="100" data-slider-step="1" data-slider-value="50"/>&nbsp;Female
+
                                         </div>
                                         <h4>Options</h4>
                                         <div class="panel panel-default">
@@ -125,13 +114,6 @@
                                                 <label>
                                                     <input name="IncludeName" type="checkbox" checked value="1">
                                                     Include Full Name
-                                   
-                                                </label>
-                                            </div>
-                                            <div class="checkbox">
-                                                <label>
-                                                    <input name="IncludeGender" type="checkbox" checked value="1">
-                                                    Include Gender
                                    
                                                 </label>
                                             </div>
@@ -167,13 +149,23 @@
                                             </div>
 
 
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input name="IncludeImage" type="checkbox" checked value="1">
+                                                    Include Image
+                                   
+                                                </label>
+                                            </div>
+
+
                                         </div>
 
                                         
-                                        <button class="btn btn-md btn-info" type="button">Generate Users</button>
+                                        <button class="btn btn-md btn-info" type="submit" value="submit">Generate Users</button>
                                         <div class="label label-danger" id="user-gen-error">There was an error in your input. Please try again.</div>
                                          <div class="panel panel-default"><h4>Randomly Generated Users</h4>
                                           <div class="panel-body" id="UsersResults">
+                                          <img src="https://randomuser.me/api/portraits/med/women/93.jpg" class="user-image">
                                               <ul class="user-list">
                                                   <li><span class="label-default field-name">Name&nbsp;</span><span class="field-value">John Smith</span></li>
                                                   <li><span class="label-default field-name">Gender&nbsp;</span><span class="field-value">Male</span></li>
@@ -186,6 +178,7 @@
                                           </div>
 </div>
                                     </div>
+                                    </form>
                                 </div>
                             </div>
                         </div>
@@ -205,5 +198,7 @@
     $("#IncludeHeaders").slider({});
     $("#IncludeLists").slider({});
     $("#MaxListItems").slider({});
+    $("#MaxUsers").slider({});
+    $("#PercentFemale").slider({});
 </script>
 </html>
