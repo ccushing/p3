@@ -15,7 +15,7 @@ return [
 
     'LoremIpsumGenerator' => true,
     'RandomUserGenerator' => true,
-    'LocationGenerator' => true,
+    'LocationGenerator' => false,
     'CreditCardNumberGenerator' => false
 
 ];

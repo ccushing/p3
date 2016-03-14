@@ -82,6 +82,8 @@ class LoremController extends Controller {
 
 			} 
 
+		#$randomText = $randomText.dd($_POST);
+
 		# Return the results view for the component with the randomly generated text
 		#return view('main')->with('loremResults', $randomText);
 		return view('main', ['formIsValid' => true,'errorMessage' => '','loremResults' => $randomText]);

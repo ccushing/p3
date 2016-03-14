@@ -35,154 +35,16 @@
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam in nunc finibus, mattis risus at, porttitor neque. Suspendisse odio elit, congue id fermentum at, tristique et urna. Sed quis laoreet ante. Praesent sed viverra lectus. Aliquam dignissim tempor convallis. Mauris congue tristique nisl, a condimentum arcu elementum et. Nam vehicula laoreet arcu, vitae tincidunt ipsum fermentum et. Morbi tincidunt interdum ante ac semper. Suspendisse eros ipsum, lacinia ac malesuada vitae, tincidunt in ex. In dolor eros, viverra et justo id, vehicula rutrum nulla. Praesent eu rhoncus ex. Suspendisse mauris ex, ullamcorper maximus fermentum eget, dictum a orci. Suspendisse sed egestas sapien. Proin tincidunt ex non mauris viverra vestibulum. </p>
 
 
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="panel panel-primary">
-                                    <div class="panel-heading">
-                                        <h3 class="panel-title" id="LoremIpsumHeader">Lorem Ipsum Generator
-                                <a data-toggle="collapse" data-target="#LoremBody" href="#LoremIpsumHeader"><span class="pull-right clickable"><i class="glyphicon glyphicon-chevron-down"></i></span></a>
-                                        </h3>
-                                    </div>
-                                    <form method="post" action="/LoremIpsum" id="LoremIpsumGeneratorForm">
-                                    <div class="panel-body" id="LoremBody">
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam in nunc finibus, mattis risus at, porttitor neque. Suspendisse odio elit, congue id fermentum at, tristique et urna.</p>
+                        @if (1==1)
+                         @include('lorem')
+                        @endif
 
-                                        <h4>Options</h4>
-                                        <div class="panel panel-default" id="LoremOptionsPanel">
-
-                                        <div class="form-group">
-                                            <label for="MaxParagraphs">Number of Paragraphs (between 1 and 150)</label>
-                                            <input id="MaxParagraphs" name="MaxParagraphs" type="text" class="span2" value="" data-slider-min="1" data-slider-max="150" data-slider-step="1" data-slider-value="[5,30]"/> 
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label for="IncludeHeaders">Frequency % of Headers to Include Before a Paragraph.</label>
-                                            <input id="IncludeHeaders" name="IncludeHeaders" type="text" data-slider-min="0" data-slider-max="100" data-slider-step="1" data-slider-value="20"/>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label for="IncludeLists">Frequency % of Lists to Include.</label>
-                                            <input id="IncludeLists" name="IncludeLists" type="text" data-slider-min="0" data-slider-max="100" data-slider-step="1" data-slider-value="15"/>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label for="MaxListItems">Number of items in List (between 2 and 50)</label>
-                                            <input id="MaxListItems" name="MaxListItems" type="text" class="span2" value="" data-slider-min="2" data-slider-max="50" data-slider-step="1" data-slider-value="[5,25]"/> 
-                                        </div>
-    
-                                        </div>
-
-                                        <button class="btn btn-md btn-info" type="submit" value="submit">Generate Text</button>
-                                         @if($formIsValid==false)
-                                        <div class="label label-danger" id="lorem-error">{{ $errorMessage }}</div>
-                                         @endif
-                                        
-                                        <div class="panel panel-default results"><h4>Generated Text</h4>
-                                          <div class="panel-body" id="LoremResults">
-                                          <p>
-                                          {!! $loremResults !!}
-                                          </p>
-                                          </div>
-                                        </div>
-                                    </div>
-                                    </form>
-                                </div>
-                            </div>
-                            </div>
-                            <div class="row">
-                            <div class="col-md-12">
-                                <div class="panel panel-primary">
-                                    <div class="panel-heading">
-                                        <h3 class="panel-title" id="RandomUserHeader">Random User Generator
-                            <a data-toggle="collapse" data-target="#UserBody" href="#RandomUserHeader"><span class="pull-right clickable"><i class="glyphicon glyphicon-chevron-down"></i></span></a></h3>
-                                    </div>
-                                    <form method="post" action="/RandomUsers" id="RandomUserGeneratorForm">
-                                    <div class="panel-body" id="UserBody">
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam in nunc finibus, mattis risus at, porttitor neque. Suspendisse odio elit, congue id fermentum at, tristique et urna.</p>
-                                        <div class="form-group">
-                                            <label for="MaxUsers">Number of Users (Maximum of 100)</label>
-                                            
-                                            <input id="MaxUsers" name="MaxUsers" type="text" data-slider-min="1" data-slider-max="100" data-slider-step="1" data-slider-value="20"/><br>
-
-                                            <label for="PercentFemale">Gender Percentage</label>
-                                            Male&nbsp;<input id="PercentFemale" name="PercentFemale" type="text" data-slider-min="1" data-slider-max="100" data-slider-step="1" data-slider-value="50"/>&nbsp;Female
-
-                                        </div>
-                                        <h4>Options</h4>
-                                        <div class="panel panel-default">
-                                            <div class="checkbox">
-                                                <label>
-                                                    <input name="IncludeName" type="checkbox" checked value="1">
-                                                    Include Full Name
-                                   
-                                                </label>
-                                            </div>
-                                            <div class="checkbox">
-                                                <label>
-                                                    <input name="IncludeStreetAddress" type="checkbox" checked value="1">
-                                                    Include Address
-                                   
-                                                </label>
-                                            </div>
-
-                                            <div class="checkbox">
-                                                <label>
-                                                    <input name="IncludePhone" type="checkbox" checked value="1">
-                                                    Include Phone Number
-                                   
-                                                </label>
-                                            </div>
-                                            <div class="checkbox">
-                                                <label>
-                                                    <input name="IncludeEmail" type="checkbox" checked value="1">
-                                                    Include Email Address
-                                   
-                                                </label>
-                                            </div>
-
-                                            <div class="checkbox">
-                                                <label>
-                                                    <input name="IncludePassword" type="checkbox" checked value="1">
-                                                    Include Password
-                                   
-                                                </label>
-                                            </div>
+                        @if (1==1)
+                         @include('random-user')
+                        @endif
 
 
-                                            <div class="checkbox">
-                                                <label>
-                                                    <input name="IncludeImage" type="checkbox" checked value="1">
-                                                    Include Image
-                                   
-                                                </label>
-                                            </div>
-
-
-                                        </div>
-
-                                        
-                                        <button class="btn btn-md btn-info" type="submit" value="submit">Generate Users</button>
-                                        <div class="label label-danger" id="user-gen-error">There was an error in your input. Please try again.</div>
-                                         <div class="panel panel-default"><h4>Randomly Generated Users</h4>
-                                          <div class="panel-body" id="UsersResults">
-                                          <img src="https://randomuser.me/api/portraits/med/women/93.jpg" class="user-image">
-                                              <ul class="user-list">
-                                                  <li><span class="label-default field-name">Name&nbsp;</span><span class="field-value">John Smith</span></li>
-                                                  <li><span class="label-default field-name">Gender&nbsp;</span><span class="field-value">Male</span></li>
-                                                  <li><span class="label-default field-name">Address&nbsp;</span><span class="field-value">5 Congress Street  Portland, ME 04101</span></li>
-                                                  <li><span class="label-default field-name">Phone&nbsp;</span><span class="field-value">207-797-8965</span></li>
-                                                  <li><span class="label-default field-name">Email&nbsp;</span><span class="field-value">John.Smith@abc.com</span></li>
-                                                  <li><span class="label-default field-name">Password&nbsp;</span><span class="field-value">red-cat-bride@995</span></li>
-                                              </ul>
-    
-                                          </div>
-</div>
-                                    </div>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-
+                        
                     </div>
                 </div>
 

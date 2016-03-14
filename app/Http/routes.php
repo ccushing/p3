@@ -18,7 +18,12 @@ Default Route - Displays the main developer's friend page
 Route::get('/', function () {
     #return view('main');
     #return view('main')->with('loremResults', '');
-    return view('main', ['formIsValid' => true,'errorMessage' => '','loremResults' => '']);
+    $randomUsers = array();
+
+    #ToDO - See if there is a better way to get the User Options Object
+    $randomUserController = new P3\Http\Controllers\RandomUserController();
+    $options = $randomUserController->GetUserOptions();
+    return view('main', ['formIsValid' => true,'errorMessage' => '','loremResults' => '','randomUsers' => $randomUsers,'randomUserOptions' => $options]);
 });
 
 
