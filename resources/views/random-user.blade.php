@@ -1,3 +1,14 @@
+@extends('main')
+
+
+@section('active-component')
+
+<ul class="nav nav-tabs">
+  <li><a href="/LoremIpsum">Lorem Ipsum Generator</a></li>
+  <li class="active"><a href="#">Random User Generator</a></li>
+</ul>
+
+
 <div class="row">
                             <div class="col-md-12">
                                 <div class="panel panel-primary">
@@ -73,14 +84,22 @@
                                             </div>
 
 
+                                            <div class="radio-inline">
+                                              <label><input type="radio" name="optDisplay" checked value="HTML">Display as HTML</label>
+                                            </div>
+                                            <div class="radio-inline">
+                                              <label><input type="radio" name="optDisplay" value="CSV">Export as csv</label>
+                                            </div>
+                                            <div class="radio-inline">
+                                              <label><input type="radio" name="optDisplay" value="Excel">Export as Excel</label>
+                                            </div>
+
                                         </div>
 
                                         
                                         <button class="btn btn-md btn-info" type="submit" value="submit">Generate Users</button>
                                         <div class="label label-danger" id="user-gen-error">There was an error in your input. Please try again.</div>
                                          <div class="panel panel-default results"><h4>Randomly Generated Users</h4>
-
-
 
                                             @foreach ($randomUsers as $user)
                                                 <div class="panel-body">
@@ -125,3 +144,4 @@
                                 </div>
                             </div>
                         </div>
+@stop

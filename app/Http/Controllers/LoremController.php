@@ -5,7 +5,14 @@ namespace P3\Http\Controllers;
 use P3\Http\Controllers\Controller;
 use Faker\Provider\Lorem;
 
-
+class LoremIpsumOptions {
+	public $MinParagraphs = 10;
+	public $MaxParagraphs = 40;
+	public $HeaderFrequency = 20;
+	public $ListFrequency = 15;
+	public $MinListItems = 5;
+	public $MaxListItems = 20;
+}
 
 class LoremController extends Controller {
 
@@ -21,6 +28,9 @@ class LoremController extends Controller {
     	}
 
 
+    	$options = new LoremIpsumOptions();
+
+
 		// use the factory to create a Faker\Generator instance
 		$faker = \Faker\Factory::create();
 
@@ -33,21 +43,29 @@ class LoremController extends Controller {
 		$randomText="";
 
 
-		$maxParagraphsArray = explode(",",$_POST["MaxParagraphs"]);
-		$maxListItemsArray = explode(",",$_POST["MaxListItems"]);
+		if (isset($_POST["MaxParagraphs"])){
+			$options->MinParagraphs = explode(",",$_POST["MaxParagraphs"])[0];
+			$options->MaxParagraphs = explode(",",$_POST["MaxParagraphs"])[1];				
+		}
+
+
+		if (isset($_POST["MaxListItems"])){
+			$options->MinListItems = explode(",",$_POST["MaxListItems"])[0];
+			$options->MaxListItems = explode(",",$_POST["MaxListItems"])[1];				
+		}
 
 
 		# 1=Never 2=Rarely 3=Sometimes 4=Often 5=Always
 		# Probability Matrix : 1:0,2=.25:.2,3=.5,4=.75,5=1  (x-1)*.25
-		$includeHeader = $_POST["IncludeHeaders"]; 
-		$includeLists = $_POST["IncludeLists"];
+		$options->HeaderFrequency = isset($_POST["IncludeHeaders"]) ? $_POST["IncludeHeaders"] : $options->HeaderFrequency ; 
+		$options->ListFrequency = isset($_POST["IncludeLists"]) ? $_POST["IncludeLists"] : $options->ListFrequency;
 
 		#echo 'includelists='.$includeLists.'<br>';
 		#echo 'listitemsmin='.$maxListItemsArray[0].'<br>';
 		#echo 'listitemsmax='.$maxListItemsArray[1].'<br>';
 
 
-		$maxParagraphs = rand($maxParagraphsArray[0],$maxParagraphsArray[1]);
+		$maxParagraphs = rand($options->MinParagraphs,$options->MaxParagraphs);
 
 
 		#Get Random Text using the Faker package
@@ -55,7 +73,7 @@ class LoremController extends Controller {
 				$numberOfSentences = rand(5, 25);
 
 				#Include Headers if specified
-				if ($includeHeader >= rand(1,100))
+				if ($options->HeaderFrequency >= rand(1,100))
 				{
 					$randomText = $randomText.'<h3>'.$faker->paragraph($nbSentences = 1, $variableNbSentences = true).'</h3>';
 				}
@@ -63,9 +81,9 @@ class LoremController extends Controller {
 				$randomText = $randomText.'<p>'.$faker->paragraph($nbSentences = $numberOfSentences, $variableNbSentences = true).'</p>';
 
 				#Include Lists if specified
-				if ($includeLists >= rand(1,100))
+				if ($options->ListFrequency >= rand(1,100))
 				{
-					$listSize = rand($maxListItemsArray[0], $maxListItemsArray[1]);
+					$listSize = rand($options->MinListItems, $options->MaxListItems);
 					$listArray = $faker->sentences($nb = $listSize, $asText = false) ;
 
 					$randomText = $randomText.'<ul>';
@@ -86,9 +104,21 @@ class LoremController extends Controller {
 
 		# Return the results view for the component with the randomly generated text
 		#return view('main')->with('loremResults', $randomText);
-		return view('main', ['formIsValid' => true,'errorMessage' => '','loremResults' => $randomText]);
 
+
+		return view('lorem', ['formIsValid' => true,'errorMessage' => '','loremResults' => $randomText,'loremOptions' => $options]);
+
+    
     }
+
+
+	public function getLoremTextResults() {
+
+		$options = new LoremIpsumOptions();
+
+		return view('lorem', ['formIsValid' => true,'errorMessage' => '','loremResults' => '','loremOptions' => $options]);
+
+	}
 
 
     public function formIsValid()

@@ -35,14 +35,7 @@
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam in nunc finibus, mattis risus at, porttitor neque. Suspendisse odio elit, congue id fermentum at, tristique et urna. Sed quis laoreet ante. Praesent sed viverra lectus. Aliquam dignissim tempor convallis. Mauris congue tristique nisl, a condimentum arcu elementum et. Nam vehicula laoreet arcu, vitae tincidunt ipsum fermentum et. Morbi tincidunt interdum ante ac semper. Suspendisse eros ipsum, lacinia ac malesuada vitae, tincidunt in ex. In dolor eros, viverra et justo id, vehicula rutrum nulla. Praesent eu rhoncus ex. Suspendisse mauris ex, ullamcorper maximus fermentum eget, dictum a orci. Suspendisse sed egestas sapien. Proin tincidunt ex non mauris viverra vestibulum. </p>
 
 
-                        @if (1==1)
-                         @include('lorem')
-                        @endif
-
-                        @if (1==1)
-                         @include('random-user')
-                        @endif
-
+                        @yield('active-component')
 
                         
                     </div>

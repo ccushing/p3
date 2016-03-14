@@ -25,6 +25,7 @@ class RandomUserOptions{
 	public $IncludeImage = true;
 	public $MaxUsers = 20;
 	public $PercentFemale = 50;
+	public $ExportType = "HTML";
 }
 
 class RandomUserController extends Controller {
@@ -46,6 +47,7 @@ class RandomUserController extends Controller {
 		$faker = \Faker\Factory::create();
 		$generatedUsers = "";
 
+
 		$options = new RandomUserOptions();
 
 		if ($this->formIsValid() == false){
@@ -56,6 +58,7 @@ class RandomUserController extends Controller {
 		#Loop through the max number of users
 		$options->MaxUsers = isset($_POST["MaxUsers"]) ?  $_POST["MaxUsers"] : $options->MaxUsers; 
 		$options->PercentFemale = isset($_POST["PercentFemale"]) ? $_POST["PercentFemale"] : $options->PercentFemale ; 
+		$options->ExportType = isset($_POST["optDisplay"]) ? $_POST["optDisplay"] : $options->ExportType ; 
 
 
 		$options->IncludeFullName = isset($_POST["IncludeName"]);
@@ -104,10 +107,32 @@ class RandomUserController extends Controller {
 
 		}
 
-        return view('main', ['formIsValid' => true,'errorMessage' => '','loremResults' => '','randomUsers' => $userArray,'randomUserOptions' => $options]);
+		if ($options->ExportType == 'HTML'){
+			return view('random-user', ['formIsValid' => true,'errorMessage' => '','randomUsers' => $userArray,'randomUserOptions' => $options]);
+		}
+
+		if ($options->ExportType == 'CSV'){
+			return view('random-user-csv', ['formIsValid' => true,'errorMessage' => '','randomUsers' => $userArray,'randomUserOptions' => $options]);
+		}
+
+		if ($options->ExportType == 'EXCEL'){
+			return Excel::create('Filename', function($excel) {})->download('xlsx');
+		}
+
+
+        
     }
 
-    public function postRandomUserResultsCSV() {
+	public function getRandomUserResults() {
+
+		$options = new RandomUserOptions();
+		$userArray = array();
+		return view('random-user', ['formIsValid' => true,'errorMessage' => '','randomUsers' => $userArray,'randomUserOptions' => $options]); 
+
+	}
+
+
+    public function getRandomUserResultsCSV() {
         return 'Return Output of Random User Generator as a CSV file';
     }
 
