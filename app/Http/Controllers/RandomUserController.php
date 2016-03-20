@@ -3,6 +3,7 @@
 namespace P3\Http\Controllers;
 
 use P3\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 
 
 class RandomUser { 
@@ -42,18 +43,18 @@ class RandomUserController extends Controller {
 
 
 
-    public function postRandomUserResults() {
+    public function postRandomUserResults(Request $request) {
 
 		$faker = \Faker\Factory::create();
-		$generatedUsers = "";
-
 
 		$options = new RandomUserOptions();
 
-		if ($this->formIsValid() == false){
-			#TODO Output Error Message here
-			return 'BAD DATA!';
-		}
+    	// Validate the Form
+		$this->validate($request, [
+        'MaxUsers' => 'required|integer|min:1|max:100',
+        'PercentFemale' => 'required|integer|min:0|max:100'
+   		 ]);
+
 
 		#Loop through the max number of users
 		$options->MaxUsers = isset($_POST["MaxUsers"]) ?  $_POST["MaxUsers"] : $options->MaxUsers; 
@@ -68,11 +69,6 @@ class RandomUserController extends Controller {
 		$options->IncludeEmail = isset($_POST["IncludeEmail"]);
 		$options->IncludePassword = isset($_POST["IncludePassword"]);
 		$options->IncludeImage = isset($_POST['IncludeImage']);
-
-
-
-		#echo dd($_POST);
-
 
 
 		$userArray = array();
@@ -108,11 +104,11 @@ class RandomUserController extends Controller {
 		}
 
 		if ($options->ExportType == 'HTML'){
-			return view('random-user', ['formIsValid' => true,'errorMessage' => '','randomUsers' => $userArray,'randomUserOptions' => $options]);
+			return view('random-user', ['randomUsers' => $userArray,'randomUserOptions' => $options]);
 		}
 
 		if ($options->ExportType == 'CSV'){
-			return view('random-user-csv', ['formIsValid' => true,'errorMessage' => '','randomUsers' => $userArray,'randomUserOptions' => $options]);
+			return view('random-user-csv', ['randomUsers' => $userArray,'randomUserOptions' => $options]);
 		}
 
 		if ($options->ExportType == 'EXCEL'){

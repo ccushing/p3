@@ -12,45 +12,6 @@
 */
 
 
-/*--------------------------------------------------------------
-Default Route - Displays the main developer's friend page
---------------------------------------------------------------*/
-Route::get('/', 'LoremController@getLoremTextResults');
-Route::get('/RandomUsers', 'RandomUserController@getRandomUserResults');
-Route::get('/LoremIpsum', 'LoremController@getLoremTextResults');
-
-
-/*--------------------------------------------------------------
-Default Result routes for each conponent
---------------------------------------------------------------*/
-Route::post('/LoremIpsum', 'LoremController@postLoremTextResults');
-Route::post('/RandomUsers', 'RandomUserController@postRandomUserResults');
-Route::post('/RandomLocation', 'RandomLocationController@postRandomLocationResults');
-
-/*--------------------------------------------------------------
-.csv route for each component (not Lorem Ipsum)
---------------------------------------------------------------*/
-Route::post('/RandomUsers/csv', 'RandomUserController@postRandomUserResultsCSV');
-Route::post('/RandomLocation/csv', 'RandomLocationController@postRandomLocationResultsCSV');
-
-
-/*--------------------------------------------------------------
-Excel route for each component (not Lorem Ipsum)
---------------------------------------------------------------*/
-Route::post('/RandomUsers/excel', 'RandomUserController@postRandomUserResultsExcel');
-Route::post('/RandomLocation/excel', 'RandomLocationController@postRandomLocationResultsExcel');
-
-
-
-/*
-Practice Route - TODO - Remove this on final deployment
-*/
-Route::get('/practice', function () {
-    echo 'practice route';
-});
-
-
-
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -63,5 +24,40 @@ Route::get('/practice', function () {
 */
 
 Route::group(['middleware' => ['web']], function () {
-    //
+	/*--------------------------------------------------------------
+	Default Route - Displays the main developer's friend page
+	--------------------------------------------------------------*/
+	Route::get('/', 'LoremController@getLoremTextResults');
+	Route::get('/RandomUsers', 'RandomUserController@getRandomUserResults');
+	Route::get('/LoremIpsum', 'LoremController@getLoremTextResults');
+
+
+	/*--------------------------------------------------------------
+	Default Result routes for each conponent
+	--------------------------------------------------------------*/
+	Route::post('/LoremIpsum', 'LoremController@postLoremTextResults');
+	Route::post('/RandomUsers', 'RandomUserController@postRandomUserResults');
+	Route::post('/RandomLocation', 'RandomLocationController@postRandomLocationResults');
+
+	/*--------------------------------------------------------------
+	.csv route for each component (not Lorem Ipsum)
+	--------------------------------------------------------------*/
+	Route::get('/RandomUsers/csv', 'RandomUserController@postRandomUserResultsCSV');
+	Route::get('/RandomLocation/csv', 'RandomLocationController@postRandomLocationResultsCSV');
+
+
+	/*--------------------------------------------------------------
+	Excel route for each component (not Lorem Ipsum)
+	--------------------------------------------------------------*/
+	Route::post('/RandomUsers/excel', 'RandomUserController@postRandomUserResultsExcel');
+	Route::post('/RandomLocation/excel', 'RandomLocationController@postRandomLocationResultsExcel');
+
+
+
+	/*
+	Practice Route - TODO - Remove this on final deployment
+	*/
+	Route::get('/practice', function () {
+	    echo 'practice route';
+	});
 });

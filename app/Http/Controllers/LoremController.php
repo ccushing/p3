@@ -4,6 +4,8 @@ namespace P3\Http\Controllers;
 
 use P3\Http\Controllers\Controller;
 use Faker\Provider\Lorem;
+use Illuminate\Http\Request;
+
 
 class LoremIpsumOptions {
 	public $MinParagraphs = 10;
@@ -17,15 +19,18 @@ class LoremIpsumOptions {
 class LoremController extends Controller {
 
 
-    public function postLoremTextResults() {
+    public function postLoremTextResults(Request $request) {
 
-		$errorMessage='There was an error in your input. Please try again.';
+
+		#dd($request);
 
     	// Validate the Form
-    	if (true==false)
-    	{
-			return view('main', ['formIsValid' => false,'errorMessage' => $errorMessage,'loremResults' => '']);
-    	}
+		$this->validate($request, [
+        'IncludeLists' => 'required|integer|min:0|max:100',
+        'IncludeHeaders' => 'required|integer|min:0|max:100'
+   		 ]);
+
+
 
 
     	$options = new LoremIpsumOptions();
@@ -55,8 +60,12 @@ class LoremController extends Controller {
 		}
 
 
-		# 1=Never 2=Rarely 3=Sometimes 4=Often 5=Always
-		# Probability Matrix : 1:0,2=.25:.2,3=.5,4=.75,5=1  (x-1)*.25
+		#if ($options->MinParagraphs < 1 OR $options->MaxParagraphs > 100){
+		#	array_push($errors, 'Paragraphs must be between 1 and 150');
+		#}
+
+
+
 		$options->HeaderFrequency = isset($_POST["IncludeHeaders"]) ? $_POST["IncludeHeaders"] : $options->HeaderFrequency ; 
 		$options->ListFrequency = isset($_POST["IncludeLists"]) ? $_POST["IncludeLists"] : $options->ListFrequency;
 
@@ -106,7 +115,7 @@ class LoremController extends Controller {
 		#return view('main')->with('loremResults', $randomText);
 
 
-		return view('lorem', ['formIsValid' => true,'errorMessage' => '','loremResults' => $randomText,'loremOptions' => $options]);
+		return view('lorem', ['loremResults' => $randomText,'loremOptions' => $options]);
 
     
     }
@@ -116,7 +125,7 @@ class LoremController extends Controller {
 
 		$options = new LoremIpsumOptions();
 
-		return view('lorem', ['formIsValid' => true,'errorMessage' => '','loremResults' => '','loremOptions' => $options]);
+		return view('lorem', ['loremResults' => '','loremOptions' => $options]);
 
 	}
 

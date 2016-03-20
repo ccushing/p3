@@ -9,14 +9,10 @@
 </ul>
 
 
-<div class="row">
-                            <div class="col-md-12">
-                                <div class="panel panel-primary">
-                                    <div class="panel-heading">
-                                        <h3 class="panel-title" id="RandomUserHeader">Random User Generator
-                            <a data-toggle="collapse" data-target="#UserBody" href="#RandomUserHeader"><span class="pull-right clickable"><i class="glyphicon glyphicon-chevron-down"></i></span></a></h3>
-                                    </div>
+                                <div class="tab-content clearfix">
+
                                     <form method="post" action="/RandomUsers" id="RandomUserGeneratorForm">
+                                    {{ csrf_field() }}
                                     <div class="panel-body" id="UserBody">
                                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam in nunc finibus, mattis risus at, porttitor neque. Suspendisse odio elit, congue id fermentum at, tristique et urna.</p>
                                         <div class="form-group">
@@ -98,7 +94,18 @@
 
                                         
                                         <button class="btn btn-md btn-info" type="submit" value="submit">Generate Users</button>
-                                        <div class="label label-danger" id="user-gen-error">There was an error in your input. Please try again.</div>
+
+                                         @if(count($errors) > 0)
+                                         <div class="label label-danger" id="user-gen-error">
+                                         <p>There were errors with your request.</p>
+                                            <ul>
+                                                @foreach ($errors->all() as $error)
+                                                    <li>{{ $error }}</li>
+                                                @endforeach
+                                            </ul>
+                                         </div>
+                                        @endif
+
                                          <div class="panel panel-default results"><h4>Randomly Generated Users</h4>
 
                                             @foreach ($randomUsers as $user)
@@ -142,6 +149,5 @@
                                     </div>
                                     </form>
                                 </div>
-                            </div>
-                        </div>
+
 @stop
