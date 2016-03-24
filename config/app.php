@@ -160,8 +160,7 @@ return [
         /*
          * Custom Packages included for P3...
          */
-        'Maatwebsite\Excel\ExcelServiceProvider',
-        Barryvdh\Debugbar\ServiceProvider::class,
+        Barryvdh\Debugbar\ServiceProvider::class
 
     ],
 
@@ -208,8 +207,9 @@ return [
         'URL'       => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View'      => Illuminate\Support\Facades\View::class,
-        'Excel'     => 'Maatwebsite\Excel\Facades\Excel',
-        'Debugbar' => Barryvdh\Debugbar\Facade::class,
+
+        'Debugbar'  => Barryvdh\Debugbar\Facade::class,
+
 
     ],
 

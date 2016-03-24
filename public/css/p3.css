@@ -1,122 +1,95 @@
-
 /*
     p3.css
     Stylesheet for the p3 web site.
     */
 
-  .row {
-            padding-top: 30px;
-        }
-
-.checkbox,.radio {
+.row {
+    padding-top: 30px;
+}
+.checkbox,
+.radio {
     padding-left: 25px;
 }
-
-
-  .row{
-    margin-top:40px;
+.row {
+    margin-top: 40px;
     padding: 0 10px;
 }
-
-
 .form-error {
-    visibility:visible;
+    visibility: visible;
 }
-
-
 .form-noerror {
-    display:none;
+    display: none;
 }
-
-
 .label-author {
     background-color: #3f454b;
 }
-
-#UserBody,#LoremBody{
-    background-color: rgba(243,243,243,.5);
-    border-radius:4px;
-
+#user-body,
+#lorem-body {
+    background-color: rgba(243, 243, 243, .5);
+    border-radius: 4px;
 }
-
-ul.nav-tabs{
+ul.nav-tabs {
     border-bottom: 0px;
 }
-.nav-tabs > li.active > a{
-    background-color: rgba(243,243,243,.5);
+.nav-tabs > li.active > a {
+    background-color: rgba(243, 243, 243, .5);
 }
-
-ul.user-list 
-{
+ul.user-list {
     list-style-type: none;
     padding: 2px;
     border-style: dashed;
     border-width: 1px;
     border-color: lightgray;
-    margin-bottom:5px;
+    margin-bottom: 5px;
+    overflow: hidden;
 }
-
-ul li span.field-name { 
+ul li span.field-name {
     float: left;
     width: 80px;
-    color:white;
-    background-color:gray;
-    font-weight:100;
-    padding-left:3px;
+    color: white;
+    background-color: gray;
+    font-weight: 100;
+    padding-left: 3px;
     /*display: block;*/
 }
-
-ul li span.field-value { 
+ul li span.field-value {
     /*float: left;*/
-    padding-left:5px;
-    padding-right:5px;
-    background-color:whitesmoke;
-    border-radius : 5px;
+    
+    padding-left: 5px;
+    padding-right: 5px;
+    background-color: whitesmoke;
+    border-radius: 5px;
     /*display:block;*/
 }
-
-#lorem-error, #user-gen-error {
-    margin-bottom:4px;
-    margin-top:5px;
-    display:block;
+#lorem-error,
+#user-gen-error {
+    margin-bottom: 4px;
+    margin-top: 5px;
+    display: block;
 }
-
-#LoremOptionsPanel
-{
+#lorem-options-panel {
     padding-left: 25px;
 }
-
-div.form-group label
-{
-    display:block;
-    margin-top:5px;
+div.form-group label {
+    display: block;
+    margin-top: 5px;
 }
-
-div.panel h4
-{
+div.panel h4 {
     margin-left: 25px;
 }
-
-div.panel
-{
-    margin-top:10px;
+div.panel {
+    margin-top: 10px;
 }
-
-div.results
-{
+div.results {
     height: 350px;
     overflow: scroll;
- }
-
-.user-image
-{
+}
+.user-image {
     width: 120px;
     border-radius: 50%;
     float: left;
     margin: 5px;
 }
-
-div.radio-inline
-{
+div.radio-inline {
     margin-left: 20px;
 }
