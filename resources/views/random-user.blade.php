@@ -14,7 +14,7 @@
     {{ csrf_field() }}
     
         <div class="panel-body" id="user-body">
-            <p>The random user generator allows you to generate up to 100 users. The gender slider allows you to determine the approximate percentage of female users will be generated. You also have the option to choose which fields to include for the randomly generated users. The user list can either be displayed on the web page, or, you can choose to download it as a ccs file.</p>
+            <p>The random user generator allows you to generate up to 100 users. The gender slider allows you to determine the approximate percentage of female users that will be generated. You also have the option to choose which fields to include for the randomly generated users. The user list can either be displayed on the web page, or, you can choose to download it as a csv file.</p>
             
             <div class="form-group">
                 <label for="max-users">Number of Users (Maximum of 100)</label>            

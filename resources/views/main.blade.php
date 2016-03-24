@@ -24,8 +24,9 @@
             <div class="col-md-10">
                 <div class="panel panel-info">
                     <div class="panel-heading">
-                        <h1 class="panel-title">CSCI E-15 : Project #3</h1>
+                        <img src="img/cora.png" alt="cora">
                         <h2>Developer's Best Friend</h2>
+                        <h1 class="panel-title">CSCI E-15 : Project #3</h1>                        
                         <h5><span class="label label-author pull-right">Submitted by : Charles Cushing</span></h5>
                     </div>
 

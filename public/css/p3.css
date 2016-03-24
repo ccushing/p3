@@ -2,7 +2,9 @@
     p3.css
     Stylesheet for the p3 web site.
     */
-
+body{
+    background-color: #6aafba;
+}
 .row {
     padding-top: 30px;
 }
@@ -92,4 +94,10 @@ div.results {
 }
 div.radio-inline {
     margin-left: 20px;
+}
+div.panel-heading img{
+border-radius: 70px;
+float:left;
+padding: 10px;
+height: 150px;
 }

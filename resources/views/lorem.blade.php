@@ -13,7 +13,7 @@
     <form method="post" action="/LoremIpsum" id="LoremIpsumGeneratorForm">
     {{ csrf_field() }}
 	    <div class="panel-body" id="lorem-body">
-	        <p>The Lorem Ipsum generator generates random filler text which mimics actual text you may find on a web page. Options are available which allow you choose the length of the text be selecting a range of paragraphs to include. You may also choose the frequency that header text will appear as well as the frequency that lists will appear.</p>
+	        <p>The Lorem Ipsum generator generates random filler text which mimics actual text you may find on a web page. Options are available which allow you choose the length of the text by selecting a range of paragraphs to include. You may also choose the frequency that header text will appear as well as the frequency of lists included in the text.</p>
 
 	        <h4>Options</h4>
 	        <div class="panel panel-default" id="lorem-options-panel">
