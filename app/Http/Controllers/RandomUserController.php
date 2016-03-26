@@ -53,13 +53,14 @@ class RandomUserController extends Controller {
 		$options->MaxUsers = $request->input('max-users') !== null ?  $request->input('max-users') : $options->MaxUsers; 
 		$options->PercentFemale = $request->input('percent-female') !== null ? $request->input('percent-female') : $options->PercentFemale ; 
 		$options->ExportType = $request->input('opt-display') !== null ? $request->input('opt-display') : $options->ExportType ; 
-		$options->IncludeFullName = $request->input('include-name') !== null ? $request->input('include-name') : $options->IncludeFullName ;
-		$options->IncludeGender = $request->input('include-gender') !== null ? $request->input('include-gender') : $options->IncludeGender;
-		$options->IncludeAddress = $request->input('include-address') !== null ? $request->input('include-address') : $options->IncludeAddress;
-		$options->IncludePhone = $request->input('include-phone') !== null ? $request->input('include-phone') : $options->IncludePhone;
-		$options->IncludeEmail = $request->input('include-email') !== null ? $request->input('include-email') : $options->IncludeEmail;
-		$options->IncludePassword = $request->input('include-password') !== null ? $request->input('include-password') : $options->IncludePassword;
-		$options->IncludeImage = $request->input('include-image') !== null ? $request->input('include-image') : $options->IncludeImage;
+
+		$options->IncludeFullName = $request->input('include-name') !== null ;
+		$options->IncludeGender = $request->input('include-gender') !== null ;
+		$options->IncludeAddress = $request->input('include-address') !== null ;
+		$options->IncludePhone = $request->input('include-phone') !== null ;
+		$options->IncludeEmail = $request->input('include-email') !== null ;
+		$options->IncludePassword = $request->input('include-password') !== null ;
+		$options->IncludeImage = $request->input('include-image') !== null ;
 
 		# All randomly generated users are stored in an array of RandomUser objects
 		$userArray = array();

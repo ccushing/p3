@@ -33,7 +33,7 @@
                     <div class="panel-body">
                         
 
-                        <p>Developer's best friend contains components which generate random data for developer's to use for testing their code. The first component, called Lorem Ipsum Generator, generates random text. Options are provided for randomly including headers and lists in the randomly generated text. The second component, called Random User Generator, generates up to 100 random users and provides options for including different fields including a face pic.  </p>
+                        <p>Developer's best friend contains components which generate random data for developers to use for testing their code. The first component, called Lorem Ipsum Generator, generates random text. Options are provided for randomly including headers and lists in the randomly generated text. The second component, called Random User Generator, generates up to 100 random users and provides options for including different fields including a face pic.  </p>
 
 
                         @yield('active-component')

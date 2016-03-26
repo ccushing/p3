@@ -88,7 +88,7 @@ div.results {
 }
 .user-image {
     width: 120px;
-    border-radius: 50%;
+    border-radius: 40%;
     float: left;
     margin: 5px;
 }
@@ -96,7 +96,7 @@ div.radio-inline {
     margin-left: 20px;
 }
 div.panel-heading img{
-border-radius: 70px;
+border-radius: 40%;
 float:left;
 padding: 10px;
 height: 150px;
