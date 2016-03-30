@@ -24,8 +24,20 @@ This video has been uploaded to YouTube. You should be able to view it in 1080p 
 ## Outside Code / Libraries used
 
 Twitter Bootstrap CSS library : version 3.3.6 - //netdna.bootstrapcdn.com/bootswatch/3.1.1/flatly/bootstrap.min.css
+
+
 Twitter Bootstrap JS library  : version 3.3.6 - //netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js
+
+
 Twitter Bootstrap Slider Control : verion 6.1.1 - //cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/6.1.1/bootstrap-slider.min.js
+
+
 JQuery ; version 1.12.0 - //ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js
+
+
 fzaninotto/faker : version 1.5.0 - https://packagist.org/packages/fzaninotto/faker
+
+
 Random User Pictures linked to randomuser.me
+
+
