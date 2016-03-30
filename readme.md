@@ -9,16 +9,16 @@ This project provides two components which generate random data which would be u
 The package fzaninotto/faker is used for generating random text and user data from the server.
 
 
-## Live URL for P2
+## Live URL for P3
 
 [P3 Live URL](http://p3.cscie15-ccushing.com/)
 
 [Github Repository URL](https://github.com/ccushing/p3)
 
 
-## Screen Cast for P2
+## Screen Cast for P3
 This video has been uploaded to YouTube. You should be able to view it in 1080p from the selector in the lower right hand corner.
-[Screencast URL](https://youtu.be/VIvLQtbf5lM)
+[Screencast URL](https://youtu.be/HRnBtAOmrVg)
 
 
 ## Outside Code / Libraries used
