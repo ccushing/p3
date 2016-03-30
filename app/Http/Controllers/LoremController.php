@@ -54,13 +54,8 @@ class LoremController extends Controller {
 			$options->MaxListItems = explode(",",$request->input('listitem-range'))[1];				
 		}
 
-/*
-		$this->validate($request, [
-        'list-frequency' => 'required|integer|min:0|max:100',
-        'header-frequency' => 'required|integer|min:0|max:100'
-   		 ]);
 
-*/
+		#Create custom validators in order to validate the slider array values
 	     $input = array( 
 	         'min_paragraph' => $options->MinParagraphs, 
 	         'max_paragraph' => $options->MaxParagraphs, 
@@ -73,10 +68,10 @@ class LoremController extends Controller {
 	     $validator = Validator::make($input, [ 
 	        'list_frequency' => 'required|integer|min:0|max:100',
 	        'header_frequency' => 'required|integer|min:0|max:100',
-   	        'min_paragraph' => 'required|integer|min:0|max:100',
-   	        'max_paragraph' => 'required|integer|min:0|max:100',
-   	        'min_listitems' => 'required|integer|min:0|max:100',
-   	        'max_listitems' => 'required|integer|min:0|max:100'
+   	        'min_paragraph' => 'required|integer|min:1|max:150',
+   	        'max_paragraph' => 'required|integer|min:1|max:150',
+   	        'min_listitems' => 'required|integer|min:2|max:50',
+   	        'max_listitems' => 'required|integer|min:2|max:50'
 	     ]);
 
 
