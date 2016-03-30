@@ -1,27 +1,31 @@
-# Laravel PHP Framework
+# Project #3 : Developer's Best Friend
 
-[![Build Status](https://travis-ci.org/laravel/framework.svg)](https://travis-ci.org/laravel/framework)
-[![Total Downloads](https://poser.pugx.org/laravel/framework/d/total.svg)](https://packagist.org/packages/laravel/framework)
-[![Latest Stable Version](https://poser.pugx.org/laravel/framework/v/stable.svg)](https://packagist.org/packages/laravel/framework)
-[![Latest Unstable Version](https://poser.pugx.org/laravel/framework/v/unstable.svg)](https://packagist.org/packages/laravel/framework)
-[![License](https://poser.pugx.org/laravel/framework/license.svg)](https://packagist.org/packages/laravel/framework)
+Submitted by Charles Cushing for CSCI E-15 : Dynamic Web Application. Spring 2016
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable, creative experience to be truly fulfilling. Laravel attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as authentication, routing, sessions, queueing, and caching.
+3/31/2016
 
-Laravel is accessible, yet powerful, providing powerful tools needed for large, robust applications. A superb inversion of control container, expressive migration system, and tightly integrated unit testing support give you the tools you need to build any application with which you are tasked.
+This project provides two components which generate random data which would be used by a developer. The first, called Lorem Ipsum, generates random Lorem Ipsum text. Options for including lists and headers in the text are provided as well as the option for providing a range of paragraphs to include. The second component will generate random users. Options are availaable for including the User's full name, address, gender, picture, email address and password. The output can also be exported as a .csv file and the probability of a user's gender can also be selected.
 
-## Official Documentation
+The package fzaninotto/faker is used for generating random text and user data from the server.
 
-Documentation for the framework can be found on the [Laravel website](http://laravel.com/docs).
 
-## Contributing
+## Live URL for P2
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](http://laravel.com/docs/contributions).
+[P3 Live URL](http://p3.cscie15-ccushing.com/)
 
-## Security Vulnerabilities
+[Github Repository URL](https://github.com/ccushing/p3)
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell at taylor@laravel.com. All security vulnerabilities will be promptly addressed.
 
-## License
+## Screen Cast for P2
+This video has been uploaded to YouTube. You should be able to view it in 1080p from the selector in the lower right hand corner.
+[Screencast URL](https://youtu.be/VIvLQtbf5lM)
 
-The Laravel framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT)
+
+## Outside Code / Libraries used
+
+Twitter Bootstrap CSS library : version 3.3.6 - //netdna.bootstrapcdn.com/bootswatch/3.1.1/flatly/bootstrap.min.css
+Twitter Bootstrap JS library  : version 3.3.6 - //netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js
+Twitter Bootstrap Slider Control : verion 6.1.1 - //cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/6.1.1/bootstrap-slider.min.js
+JQuery ; version 1.12.0 - //ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js
+fzaninotto/faker : version 1.5.0 - https://packagist.org/packages/fzaninotto/faker
+Random User Pictures linked to randomuser.me

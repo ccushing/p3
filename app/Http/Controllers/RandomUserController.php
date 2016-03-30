@@ -4,6 +4,7 @@ namespace P3\Http\Controllers;
 
 use P3\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 #Class for a randomly generated user
 class RandomUser { 
@@ -41,19 +42,13 @@ class RandomUserController extends Controller {
 
 		$options = new RandomUserOptions();
 
-    	// Validate the Form
-		$this->validate($request, [
-        'max-users' => 'required|integer|min:1|max:100',
-        'percent-female' => 'required|integer|min:0|max:100',
-        'opt-display' => 'required|in:HTML,CSV'
-   		 ]);
+    	// Validate the Form values for Max Users, Female % and Display Option. Also verify that at least one field option has been checked
 
-
-		# Set option values for the Random User Generator - If the option is not included, use the default value in the $options object
 		$options->MaxUsers = $request->input('max-users') !== null ?  $request->input('max-users') : $options->MaxUsers; 
 		$options->PercentFemale = $request->input('percent-female') !== null ? $request->input('percent-female') : $options->PercentFemale ; 
 		$options->ExportType = $request->input('opt-display') !== null ? $request->input('opt-display') : $options->ExportType ; 
 
+		# Set option values for the Random User Generator - If the option is not included, assume the option is not checked
 		$options->IncludeFullName = $request->input('include-name') !== null ;
 		$options->IncludeGender = $request->input('include-gender') !== null ;
 		$options->IncludeAddress = $request->input('include-address') !== null ;
@@ -61,6 +56,32 @@ class RandomUserController extends Controller {
 		$options->IncludeEmail = $request->input('include-email') !== null ;
 		$options->IncludePassword = $request->input('include-password') !== null ;
 		$options->IncludeImage = $request->input('include-image') !== null ;
+
+		#Used to verify at at least one option field is checked
+		$optionCheck = $options->IncludeFullName + $options->IncludeGender +  $options->IncludeAddress + $options->IncludePhone + $options->IncludeEmail + $options->IncludePassword + $options->IncludeImage;
+
+
+    	$input = array( 
+	         'max-users' => $options->MaxUsers, 
+	         'percent-female' => $options->PercentFemale, 
+	         'opt-display' => $options->ExportType,
+	         'one-option-selected' => $optionCheck
+	     );
+
+	     $validator = Validator::make($input, [ 
+        	'max-users' => 'required|integer|min:1|max:100',
+        	'percent-female' => 'required|integer|min:0|max:100',
+        	'opt-display' => 'required|in:HTML,CSV',
+        	'one-option-selected' => 'required|integer|min:1'
+	     ]);
+
+
+	    if ($validator->fails()) { 
+	         return redirect('RandomUsers') 
+	                     ->withErrors($validator) 
+	                     ->withInput(); 
+	     } 
+
 
 		# All randomly generated users are stored in an array of RandomUser objects
 		$userArray = array();
@@ -75,7 +96,7 @@ class RandomUserController extends Controller {
 			}
 
 
-			#Generate user attributes using the Faker Object
+			#Generate user attributes using the Faker Object. Store the user data in the RandomUser object
 			$newUser = new RandomUser();
 
 			$newUser->name = $faker->name($gender = $g);
@@ -99,12 +120,14 @@ class RandomUserController extends Controller {
 
 
 		#Return the Results in the page via the random-user view
+
+		#If HTML is selected, return the random-user view
 		if ($options->ExportType == 'HTML'){
 			return view('random-user', ['randomUsers' => $userArray,'randomUserOptions' => $options]);
 		}
 
 
-		# Return the Array of Randomly Generated Users as a .csv file for download
+		# If .csv is selected, return the Array of Randomly Generated Users as a .csv file for download
 		if ($options->ExportType == 'CSV'){
 
 			#Create the header row of the .csv file

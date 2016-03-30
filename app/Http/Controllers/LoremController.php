@@ -5,7 +5,7 @@ namespace P3\Http\Controllers;
 use P3\Http\Controllers\Controller;
 use Faker\Provider\Lorem;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Validator;
 
 # This class keeps the options selected by the user and provides the default option values for the Lorem Ipsum generator
 class LoremIpsumOptions {
@@ -38,12 +38,54 @@ class LoremController extends Controller {
 
 
     	# Validate the Form
+
+		# The slider values for the number of paragraphs to include is returned as an array of 2 integers from the form.
+		# The number of paragraphs to include will be a random number between the two values selected by the user.
+
+		if ($request->input('paragraph-range') !== null){
+			$options->MinParagraphs = explode(",",$request->input('paragraph-range'))[0];
+			$options->MaxParagraphs = explode(",",$request->input('paragraph-range'))[1];				
+		}
+
+		# The slider values for the number of list items to include is returned as an array of 2 integers from the form.
+		# The number of items to include in a list will be a random number between the two values selected by the user.
+		if ($request->input('listitem-range') !== null){
+			$options->MinListItems = explode(",",$request->input('listitem-range'))[0];
+			$options->MaxListItems = explode(",",$request->input('listitem-range'))[1];				
+		}
+
+/*
 		$this->validate($request, [
         'list-frequency' => 'required|integer|min:0|max:100',
         'header-frequency' => 'required|integer|min:0|max:100'
    		 ]);
 
+*/
+	     $input = array( 
+	         'min_paragraph' => $options->MinParagraphs, 
+	         'max_paragraph' => $options->MaxParagraphs, 
+	         'header_frequency' => $request->input('header-frequency'), 
+	         'list_frequency' => $request->input('list-frequency'), 
+	         'min_listitems' => $options->MinListItems, 
+	         'max_listitems' => $options->MaxListItems
+	     );
 
+	     $validator = Validator::make($input, [ 
+	        'list_frequency' => 'required|integer|min:0|max:100',
+	        'header_frequency' => 'required|integer|min:0|max:100',
+   	        'min_paragraph' => 'required|integer|min:0|max:100',
+   	        'max_paragraph' => 'required|integer|min:0|max:100',
+   	        'min_listitems' => 'required|integer|min:0|max:100',
+   	        'max_listitems' => 'required|integer|min:0|max:100'
+	     ]);
+
+
+ 
+	     if ($validator->fails()) { 
+	         return redirect('LoremIpsum') 
+	                     ->withErrors($validator) 
+	                     ->withInput(); 
+	     } 
 
 
 		/*************************************************************************************************************
@@ -51,29 +93,12 @@ class LoremController extends Controller {
 		Take values submitted from the user and store in the $options object.
 		*************************************************************************************************************/
 
-			# The slider values for the number of paragraphs to include is returned as an array of 2 integers from the form.
-			# The number of paragraphs to include will be a random number between the two values selected by the user.
-
-			if ($request->input('paragraph-range') !== null){
-				$options->MinParagraphs = explode(",",$request->input('paragraph-range'))[0];
-				$options->MaxParagraphs = explode(",",$request->input('paragraph-range'))[1];				
-			}
-
-
 
 			# The IncludeHeaders value is the frequency percentage to include a header with a paragraph.
 			$options->HeaderFrequency = $request->input('header-frequency') !== null ? $request->input('header-frequency') : $options->HeaderFrequency ; 
 
 			# The ListFrequency value is the frequency percentage to include a bulleted list with a paragraph.
 			$options->ListFrequency = $request->input('list-frequency') !== null ? $request->input('list-frequency') : $options->ListFrequency;
-
-
-			# The slider values for the number of list items to include is returned as an array of 2 integers from the form.
-			# The number of items to include in a list will be a random number between the two values selected by the user.
-			if ($request->input('listitem-range') !== null){
-				$options->MinListItems = explode(",",$request->input('listitem-range'))[0];
-				$options->MaxListItems = explode(",",$request->input('listitem-range'))[1];				
-			}
 
 
 			# Randomly select the number of paragrphs to include. This will be a random number between the slider values selected by the user.
